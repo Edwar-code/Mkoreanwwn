@@ -55,10 +55,9 @@ layout: layouts/base.njk
     display: flex;
     justify-content: center;
     overflow: visible;
-    padding:16px 0; /* Added default padding for sections */
+    padding: 16px 0; /* Added default padding for sections */
   }
   .big-hero-six {
-    /* This padding pushes the text down to make room for the overlapping photo */
     padding-top: 180px; 
   }
   .wave-bottom {
@@ -68,6 +67,44 @@ layout: layouts/base.njk
     height: auto;
     bottom: -2px;
   }
+
+  /* NEW: Improved Button Styles */
+  .btn-cta {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #007AFF;
+    color: #FFFFFF;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  }
+  .btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.5);
+  }
+  .cta-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap; /* Allows buttons to stack on smaller screens */
+  }
+  /* Style for secondary button */
+  .btn-cta.secondary {
+    background-color: #26A5E4; /* Telegram blue */
+    box-shadow: 0 4px 15px rgba(38, 165, 228, 0.3);
+  }
+  .btn-cta.secondary:hover {
+    box-shadow: 0 8px 20px rgba(38, 165, 228, 0.5);
+  }
+
+
   .footer-compact {
     background-color: #111;
     color: #666;
@@ -81,15 +118,13 @@ layout: layouts/base.njk
   .footer-socials-compact img {
     width: 24px;
     height: 24px;
-    filter: invert(0.5); /* Default state for all icons: Makes them grey */
+    filter: invert(0.5); 
     transition: filter 0.3s ease, transform 0.3s ease;
   }
-  /* --- FIX: Only adjust the size of the TikTok icon, let it inherit the filter --- */
   .footer-socials-compact img[alt="TikTok"] {
     width: 26px;
     height: 26px;
   }
-  /* On hover, ALL icons will now turn white */
   .footer-socials-compact a:hover img {
     filter: invert(1);
     transform: scale(1.1);
@@ -158,11 +193,10 @@ layout: layouts/base.njk
   .fab-options img {
     width: 28px;
     height: 28px;
-    filter: brightness(0) invert(1); /* Makes icons inside the FAB white */
+    filter: brightness(0) invert(1);
   }
-  /* Brand colors for FAB buttons */
   .fab-whatsapp-channel { background-color: #25D366; }
-  .fab-whatsapp-personal { background-color: #128C7E; } /* Different shade for personal */
+  .fab-whatsapp-personal { background-color: #128C7E; }
   #fab-telegram { background-color: #26A5E4; }
   #fab-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
   #fab-tiktok { background-color: #000000; }
@@ -183,47 +217,23 @@ layout: layouts/base.njk
     100% { opacity: 1; transform: scale(1); }
   }
 
-  /* --- Responsive styles for Account Flips section --- */
   @media (max-width: 768px) {
     .netlify .showcase {
-      /* Adjusted scale and margin to accommodate larger cards */
       transform: scale(1.2);
       margin-top: -27px;
     }
-
     .netlify .showcase .card {
-      /* Enlarged card dimensions (1.4x bigger) */
-      width: 200px;  /* 200px * 1.4 */
-      height: 176px; /* 120px * 1.4 */
+      width: 200px;
+      height: 176px;
     }
-
-    /* Repositioned cards to fit the new, larger size */
-    .netlify .showcase .card:nth-child(1) {
-      top: -130px;
-         left:-15px;
-    }
-
-    .netlify .showcase .card:nth-child(2) {
-      top: -150px;
-      left:130px;
-    }
-
-    .netlify .showcase .card:nth-child(3) {
-      top: 10px;
-      left: 0px;
-    }
-
-    .netlify .showcase .card:nth-child(4) {
-      top:80px;
-      left:175px;
-    }
-
-    .netlify .showcase .card:nth-child(5) {
-      top: -18px;
-      left:175px;
-    }
+    .netlify .showcase .card:nth-child(1) { top: -130px; left:-15px; }
+    .netlify .showcase .card:nth-child(2) { top: -150px; left:130px; }
+    .netlify .showcase .card:nth-child(3) { top: 10px; left: 0px; }
+    .netlify .showcase .card:nth-child(4) { top:80px; left:175px; }
+    .netlify .showcase .card:nth-child(5) { top: -18px; left:175px; }
   }
 </style>
+
 <!-- NAVBAR -->
 <div class="navbar-wrapper">
   <nav class="navbar">
@@ -233,11 +243,14 @@ layout: layouts/base.njk
     <a href="#contact">Contact</a>
   </nav>
 </div>
+
 <!-- PROFILE PHOTO -->
 <div class="profile-photo-container">
   <img src="/assets/profile.jpg" alt="CeejayFX Profile Photo" class="profile-photo">
 </div>
+
 <div class="papa-wrapper">
+  <!-- HERO: Short, direct, and motivational -->
   <div id="home" class="section big-hero-six" data-theme-color="rgb(255, 255, 255)">
     <div class="background">
       <video preload playsinline muted autoplay poster="/assets/poster.jpg" src="/assets/background-video.mp4" fetchpriority="high"></video>
@@ -246,21 +259,21 @@ layout: layouts/base.njk
       <div class="content">
         <p>Hello, I'm</p>
         <h1>Mkorean<span id="unecessary-part-of-name">wwn</span></h1>
-        <p>A student and a full-time Binary Options trader, engineering strategies for market success.</p>
+        <p>I don't just trade Binary Options—I build winners. Let's conquer the markets together.</p>
       </div>
     </div>
     <div class="custom-wave"></div>
   </div>
-  <!-- SPECIALTY 1: SNIPER ENTRIES -->
+
+  <!-- SPECIALTY 1: PRECISION - Focused on the core skill -->
   <div id="specialties" class="section handmirror" data-theme-color="rgb(234, 233, 234)" style="background-color: rgb(234, 233, 234);">
     <div class="main-content-wrapper">
       <div class="content">
-        <h2><span class="timestamp">Specialty</span><br />Precision Timing</h2>
-        <p>In binary options, winning and losing is decided in seconds. My primary focus is on precision timing—identifying the exact moment to enter a trade for maximum probability of success within a short expiry.</p>
-        <p>It's about reading the rhythm of the market and acting with decisive confidence. This skill is crucial for filtering out market noise and capitalizing on fleeting opportunities.</p>
-     <h3>Trade with My Bots & Strategies</h3>
-        <p>Ready to elevate your trading? You can use my custom-developed trading bots and proven strategies to trade alongside me. Visit my official trading site to get started and gain access to the tools I use every day.</p>
-        <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
+        <h2><span class="timestamp">My Edge</span><br />Precision is Everything</h2>
+        <p>In this game, every second counts. My entire strategy is built on pinpointing the <strong>exact</strong> moment to strike. It’s not just about analysis; it's about courage and perfect timing to seize opportunities others miss.</p>
+        <p>Ready to trade with that kind of precision? Access my personal bots and strategies now.</p>
+        <br>
+        <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn-cta">Trade With Me</a>
       </div>
       <div class="showcase">
         <div class="card video-card depth-level-3"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-4.mp4"></video></div>
@@ -274,15 +287,15 @@ layout: layouts/base.njk
       <path d="M4323 34.5566C4323 252.392 4225.5 548.808 3509.5 548.808C3135 548.808 3153.5 368.696 2564.5 393C2119.77 411.351 1139.99 506.534 733.498 548.808C327.002 591.082 0 561.739 0 561.739V700H4323C4323 700 4323 -183.279 4323 34.5566Z" fill="#060606"/>
     </svg>
   </div>
-  <!-- SPECIALTY 2: PRECISE MARKET ANALYSIS -->
+
+  <!-- SPECIALTY 2: YOUTUBE - Focused on learning and proof -->
   <div class="section thwip" data-theme-color="rgb(6, 6, 6)" style="background-color: #060606;">
     <div class="main-content-wrapper">
       <div class="content" style="color: #faf9f6;">
-        <h2><span class="timestamp">Specialty</span><br />Precise Market Analysis & YouTube</h2>
-        <p>A trade is only as good as the analysis behind it. I've developed a robust framework for decoding market behavior, layering technicals, sentiment, and structure.</p>
-        <p>Each piece of data is like a distinct signal. When multiple signals align, they create a harmony of confluence—a high-probability setup. This system filters out the noise, allowing me to act with confidence.</p>
-        <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content and learn from my live trades and analysis.</p>
-        <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
+        <h2><span class="timestamp">The Playbook</span><br />Learn the Game on YouTube</h2>
+        <p>This isn't just theory. On my channel, I break down my live trades, share the exact strategies I use, and reveal the winning mindset you need to succeed. No secrets, just pure analysis. See for yourself.</p>
+        <br>
+        <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn-cta">Watch & Learn</a>
       </div>
       <div class="showcase">
         <div class="card depth-level-1"></div>
@@ -297,19 +310,17 @@ layout: layouts/base.njk
       <path d="M4.72978e-08 34.5567C-0.00398254 252.392 251.499 426.462 957.999 515.983C2043 640.319 1870.5 376.296 2459.5 400.6C2904.23 418.951 3183 506.534 3589.5 548.808C3996 591.082 4323 561.739 4323 561.739V700H4.72978e-08C4.72978e-08 700 0.00398264 -183.279 4.72978e-08 34.5567Z" fill="#DEC19A"/>
     </svg>
   </div>
-  <!-- SPECIALTY 3: ACCOUNT FLIPS & COMMUNITY -->
+  
+  <!-- SPECIALTY 3: COMMUNITY - Focused on joining the action -->
   <div class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color:  #b0c0e6;">
     <div class="main-content-wrapper">
       <div class="content">
-        <h2><span class="timestamp">Specialty</span><br />Account Flips & Community</h2>
-        <p>The ultimate test of skill is the art of taking a small account and aggressively compounding it through a series of precise, high-conviction trades. This is a demonstration of what's possible with elite skill and calculated risk management.</p>
-        <p>The success of my community is a testament to the effectiveness of my trading signals. The proof is in the results from followers who have trusted my analysis and joined my community. Their success is my success.</p>
-        <h3>Join the Official Trades Group</h3>
-        <p>Join our exclusive WhatsApp channel where well-analysed trading signals are sent daily. Engage directly with our thriving community and stay ahead of the market. Click the link below to become part of the group.</p>
-        <a href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" class="btn">Join WhatsApp Channel</a>
-        <h3 style="margin-top: 2em;">Join Our Telegram Channel</h3>
-        <p>For real-time updates and additional insights, join my official Telegram channel. Here, well-analysed signals are also sent daily, making it another great way to stay connected and receive timely trading information.</p>
-        <a href="https://t.me/mkorean" target="_blank" class="btn">Join on Telegram</a>
+        <h2><span class="timestamp">The Circle</span><br />Join the Winning Team</h2>
+        <p>This is where the magic happens. Our community is built on real results and daily, well-analyzed signals. We take on the market together and we win together. Ready to be part of the action? Join us now.</p>
+        <div class="cta-buttons-container">
+          <a href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" class="btn-cta">Join WhatsApp</a>
+          <a href="https://t.me/mkorean" target="_blank" class="btn-cta secondary">Join Telegram</a>
+        </div>
       </div>
       <div class="showcase">
         <div class="card depth-level-2"></div>
@@ -324,12 +335,12 @@ layout: layouts/base.njk
     </svg>
   </div>
   
-  <!-- MENTORS & INSPIRATIONS (FIXED STRUCTURE) -->
+  <!-- MENTORS & INSPIRATIONS -->
   <div id="about" class="section" style="background-color: #FFFFFF; padding: 60px 0;">
     <div class="main-content-wrapper people-id-like-to-meet">
       <div class="content">
         <h3>Mentors & Inspirations</h3>
-        <p>As a trader and a student, I'm constantly learning from those who've mastered their craft. I've been fortunate to connect with some incredible minds, but the journey of learning never stops. Here are a few inspirations.</p>
+        <p>I'm always learning from the best. These are some of the minds that have shaped my journey. The next spot is reserved for you.</p>
         <ul>
           <li class="checked"><span class="tick"></span><a href="#">Vidollar</a></li>
           <li class="checked"><span class="tick"></span><a href="#">Habbyfx</a></li>
@@ -339,7 +350,7 @@ layout: layouts/base.njk
     </div>
   </div>
 
-  <!-- NEW COMPACT FOOTER -->
+  <!-- FOOTER -->
   <div id="contact" class="footer-compact">
    <div class="footer-socials-compact">
       <a href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp (Personal)"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
@@ -353,7 +364,7 @@ layout: layouts/base.njk
   </div>
 </div>
 <img src="/assets/not-how-this-works.png" id="easterNope" class="easter not-how-this-works" />
-<!-- FLOATING ACTION BUTTON (FAB) FOR LIVE CHAT -->
+<!-- FAB -->
 <div class="fab-container">
   <div class="fab-options">
     <a class="fab-whatsapp-personal" href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp (Personal)"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
