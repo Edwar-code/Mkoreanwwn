@@ -161,20 +161,22 @@ layout: layouts/base.njk
     filter: brightness(0) invert(1); /* Makes icons inside the FAB white */
   }
   /* Brand colors for FAB buttons */
-  #fab-whatsapp { background-color: #25D366; }
+  .fab-whatsapp-channel { background-color: #25D366; }
+  .fab-whatsapp-personal { background-color: #128C7E; } /* Different shade for personal */
   #fab-telegram { background-color: #26A5E4; }
   #fab-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
   #fab-tiktok { background-color: #000000; }
-  
+  #fab-youtube { background-color: #FF0000; }
+
   .fab-container.is-active .fab-options a {
     animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
   .fab-container.is-active .fab-options a:nth-child(1) { animation-delay: 0.1s; }
-  .fab-container.is-active .fab-options a:nth-child(2) { animation-delay: 0.2s; }
-  .fab-container.is-active .fab-options a:nth-child(3) { animation-delay: 0.3s; }
-  .fab-container.is-active .fab-options a:nth-child(4) { animation-delay: 0.4s; }
-  .fab-container.is-active .fab-options a:nth-child(5) { animation-delay: 0.5s; }
-
+  .fab-container.is-active .fab-options a:nth-child(2) { animation-delay: 0.15s; }
+  .fab-container.is-active .fab-options a:nth-child(3) { animation-delay: 0.2s; }
+  .fab-container.is-active .fab-options a:nth-child(4) { animation-delay: 0.25s; }
+  .fab-container.is-active .fab-options a:nth-child(5) { animation-delay: 0.3s; }
+  .fab-container.is-active .fab-options a:nth-child(6) { animation-delay: 0.35s; }
 
   @keyframes pop-in {
     0% { opacity: 0; transform: scale(0.5); }
@@ -222,7 +224,6 @@ layout: layouts/base.njk
     }
   }
 </style>
-
 <!-- NAVBAR -->
 <div class="navbar-wrapper">
   <nav class="navbar">
@@ -232,12 +233,10 @@ layout: layouts/base.njk
     <a href="#contact">Contact</a>
   </nav>
 </div>
-
 <!-- PROFILE PHOTO -->
 <div class="profile-photo-container">
   <img src="/assets/profile.jpg" alt="CeejayFX Profile Photo" class="profile-photo">
 </div>
-
 <div class="papa-wrapper">
   <div id="home" class="section big-hero-six" data-theme-color="rgb(255, 255, 255)">
     <div class="background">
@@ -252,16 +251,15 @@ layout: layouts/base.njk
     </div>
     <div class="custom-wave"></div>
   </div>
-
-  <!-- SECTION 1: PRECISION & STRATEGY -->
+  <!-- SPECIALTY 1: SNIPER ENTRIES -->
   <div id="specialties" class="section handmirror" data-theme-color="rgb(234, 233, 234)" style="background-color: rgb(234, 233, 234);">
     <div class="main-content-wrapper">
       <div class="content">
-        <h2><span class="timestamp">Specialty</span><br />Precision & Strategy</h2>
-        <p>A trade is only as good as the analysis behind it. My primary focus is on <strong>precision timing</strong>—identifying the exact moment to enter a trade for maximum probability of success within a short expiry.</p>
-        <p>I've developed a robust framework for decoding market behavior by layering technicals, sentiment, and structure. This system filters out noise, allowing me to act with decisive confidence and capitalize on fleeting opportunities.</p>
-        <h3>Trade with My Bots & Strategies</h3>
-        <p>Ready to elevate your trading? You can use my custom-developed trading bots and proven strategies. Visit my official trading site to get started and gain access to the tools I use every day.</p>
+        <h2><span class="timestamp">Specialty</span><br />Precision Timing</h2>
+        <p>In binary options, winning and losing is decided in seconds. My primary focus is on precision timing—identifying the exact moment to enter a trade for maximum probability of success within a short expiry.</p>
+        <p>It's about reading the rhythm of the market and acting with decisive confidence. This skill is crucial for filtering out market noise and capitalizing on fleeting opportunities.</p>
+     <h3>Trade with My Bots & Strategies</h3>
+        <p>Ready to elevate your trading? You can use my custom-developed trading bots and proven strategies to trade alongside me. Visit my official trading site to get started and gain access to the tools I use every day.</p>
         <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
       </div>
       <div class="showcase">
@@ -276,37 +274,14 @@ layout: layouts/base.njk
       <path d="M4323 34.5566C4323 252.392 4225.5 548.808 3509.5 548.808C3135 548.808 3153.5 368.696 2564.5 393C2119.77 411.351 1139.99 506.534 733.498 548.808C327.002 591.082 0 561.739 0 561.739V700H4323C4323 700 4323 -183.279 4323 34.5566Z" fill="#060606"/>
     </svg>
   </div>
-
-  <!-- SECTION 2: COMMUNITY & RESULTS -->
-  <div class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color:  #b0c0e6;">
-    <div class="main-content-wrapper">
-      <div class="content">
-        <h2><span class="timestamp">Specialty</span><br />Community & Results</h2>
-        <p>The success of our community is a testament to the effectiveness of these trading strategies. The proof is in the results from followers who have trusted my analysis.</p>
-        <p>A key demonstration of this is the "Account Flip"—the art of taking a small account and aggressively compounding it. It requires cracking the market's code under pressure and showcases what is possible with elite skill and calculated risk management.</p>
-        <p>Their success is my success, and it validates the power of a shared, strategic approach.</p>
-      </div>
-      <div class="showcase">
-        <div class="card depth-level-2"></div>
-        <div class="card depth-level-3"></div>
-        <div class="card depth-level-1"></div>
-        <div class="card depth-level-2"></div>
-        <div class="card depth-level-3"></div>
-      </div>
-    </div>
-    <svg class="wave wave-bottom" width="4324" height="202" viewBox="0 0 4324 202" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0.996094 202V80.4186C0.996094 80.4186 202 -52.0911 743 24.5C1284 101.091 1884 24.5 2624 24.5C3364 24.5 4324 101.091 4324 101.091C4324 101.091 4324 202 4324 202H0.996094Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
-
-  <!-- SECTION 3: YOUTUBE & EDUCATION -->
+  <!-- SPECIALTY 2: PRECISE MARKET ANALYSIS -->
   <div class="section thwip" data-theme-color="rgb(6, 6, 6)" style="background-color: #060606;">
     <div class="main-content-wrapper">
       <div class="content" style="color: #faf9f6;">
-        <h2><span class="timestamp">Education</span><br />My YouTube Channel</h2>
-        <p>Knowledge is meant to be shared. I document my trading journey, break down complex strategies, and provide market insights on my YouTube channel.</p>
-        <p>It's the best place to learn from my live trades, watch in-depth analysis, and stay updated with the latest content designed to help you grow as a trader.</p>
-        <br>
+        <h2><span class="timestamp">Specialty</span><br />Precise Market Analysis & YouTube</h2>
+        <p>A trade is only as good as the analysis behind it. I've developed a robust framework for decoding market behavior, layering technicals, sentiment, and structure.</p>
+        <p>Each piece of data is like a distinct signal. When multiple signals align, they create a harmony of confluence—a high-probability setup. This system filters out the noise, allowing me to act with confidence.</p>
+        <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content and learn from my live trades and analysis.</p>
         <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
       </div>
       <div class="showcase">
@@ -320,6 +295,32 @@ layout: layouts/base.njk
     </div>
     <svg class="wave wave-bottom" width="4323" height="700" viewBox="0 0 4323 700" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.72978e-08 34.5567C-0.00398254 252.392 251.499 426.462 957.999 515.983C2043 640.319 1870.5 376.296 2459.5 400.6C2904.23 418.951 3183 506.534 3589.5 548.808C3996 591.082 4323 561.739 4323 561.739V700H4.72978e-08C4.72978e-08 700 0.00398264 -183.279 4.72978e-08 34.5567Z" fill="#DEC19A"/>
+    </svg>
+  </div>
+  <!-- SPECIALTY 3: ACCOUNT FLIPS & COMMUNITY -->
+  <div class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color:  #b0c0e6;">
+    <div class="main-content-wrapper">
+      <div class="content">
+        <h2><span class="timestamp">Specialty</span><br />Account Flips & Community</h2>
+        <p>The ultimate test of skill is the art of taking a small account and aggressively compounding it through a series of precise, high-conviction trades. This is a demonstration of what's possible with elite skill and calculated risk management.</p>
+        <p>The success of my community is a testament to the effectiveness of my trading signals. The proof is in the results from followers who have trusted my analysis and joined my community. Their success is my success.</p>
+        <h3>Join the Official Trades Group</h3>
+        <p>Join our exclusive WhatsApp channel where well-analysed trading signals are sent daily. Engage directly with our thriving community and stay ahead of the market. Click the link below to become part of the group.</p>
+        <a href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" class="btn">Join WhatsApp Channel</a>
+        <h3 style="margin-top: 2em;">Join Our Telegram Channel</h3>
+        <p>For real-time updates and additional insights, join my official Telegram channel. Here, well-analysed signals are also sent daily, making it another great way to stay connected and receive timely trading information.</p>
+        <a href="https://t.me/mkorean" target="_blank" class="btn">Join on Telegram</a>
+      </div>
+      <div class="showcase">
+        <div class="card depth-level-2"></div>
+        <div class="card depth-level-3"></div>
+        <div class="card depth-level-1"></div>
+        <div class="card depth-level-2"></div>
+        <div class="card depth-level-3"></div>
+      </div>
+    </div>
+    <svg class="wave wave-bottom" width="4324" height="202" viewBox="0 0 4324 202" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.996094 202V80.4186C0.996094 80.4186 202 -52.0911 743 24.5C1284 101.091 1884 24.5 2624 24.5C3364 24.5 4324 101.091 4324 101.091C4324 101.091 4324 202 4324 202H0.996094Z" fill="#FFFFFF"/>
     </svg>
   </div>
   
@@ -341,7 +342,8 @@ layout: layouts/base.njk
   <!-- NEW COMPACT FOOTER -->
   <div id="contact" class="footer-compact">
    <div class="footer-socials-compact">
-      <a href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" title="WhatsApp Channel"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp Channel"/></a>
+      <a href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp (Personal)"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
+      <a href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" title="WhatsApp Channel"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp Group"/></a>
       <a href="https://t.me/mkorean" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
       <a href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
       <a href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank" title="TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
@@ -351,11 +353,11 @@ layout: layouts/base.njk
   </div>
 </div>
 <img src="/assets/not-how-this-works.png" id="easterNope" class="easter not-how-this-works" />
-
 <!-- FLOATING ACTION BUTTON (FAB) FOR LIVE CHAT -->
 <div class="fab-container">
   <div class="fab-options">
-    <a id="fab-whatsapp" href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" title="WhatsApp Channel"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
+    <a class="fab-whatsapp-personal" href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp (Personal)"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
+    <a class="fab-whatsapp-channel" href="https://whatsapp.com/channel/0029Vb74nhT3bbV0F4OeEE1b" target="_blank" title="WhatsApp Channel"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp Channel"/></a>
     <a id="fab-telegram" href="https://t.me/mkorean" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
     <a id="fab-youtube" href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" title="YouTube"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
     <a id="fab-instagram" href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
