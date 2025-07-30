@@ -68,7 +68,7 @@ layout: layouts/base.njk
     bottom: -2px;
   }
 
-  /* --- NEW: Advanced Button Styles with Icons --- */
+  /* --- Advanced Button Styles with Icons --- */
   .btn-cta {
     display: inline-flex;
     align-items: center;
@@ -88,10 +88,14 @@ layout: layouts/base.njk
   .btn-cta:hover {
     transform: translateY(-3px);
   }
-  .btn-cta img {
+  .btn-cta img, .btn-cta svg {
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
+  }
+  .btn-cta svg {
+    filter: none;
+    fill: #FFFFFF;
   }
   .cta-buttons-container {
     display: flex;
@@ -241,7 +245,35 @@ layout: layouts/base.njk
     100% { opacity: 1; transform: scale(1); }
   }
 
+  /* --- ALL MOBILE RESPONSIVE STYLES --- */
   @media (max-width: 768px) {
+    /* Adjust typography for mobile */
+    h1 {
+      font-size: 2.8rem;
+    }
+    h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .content p {
+      font-size: 0.95rem;
+    }
+
+    /* Adjust button sizes for mobile */
+    .btn-cta {
+      padding: 10px 22px;
+      font-size: 0.8rem;
+      gap: 8px;
+    }
+    .cta-buttons-container {
+      gap: 12px;
+    }
+    
+    /* FIX: Overlap issue in community section */
+    .netlify .content {
+      padding-bottom: 250px; /* Adds space to prevent showcase from covering buttons */
+    }
+
     .netlify .showcase {
       transform: scale(1.2);
       margin-top: -27px;
@@ -299,7 +331,7 @@ layout: layouts/base.njk
         <br>
         <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn-cta btn-brand">
           <span>Trade With Me</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/></svg>
         </a>
       </div>
       <div class="showcase">
