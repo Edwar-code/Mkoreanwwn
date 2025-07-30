@@ -1,7 +1,6 @@
 ---
 layout: layouts/base.njk
----
-<style>
+---<style>
   .navbar-wrapper {
     position: fixed;
     width: 100%;
@@ -166,7 +165,6 @@ layout: layouts/base.njk
   #fab-telegram { background-color: #26A5E4; }
   #fab-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
   #fab-tiktok { background-color: #000000; }
-  #fab-youtube { background-color: #FF0000; }
   
   .fab-container.is-active .fab-options a {
     animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -175,7 +173,6 @@ layout: layouts/base.njk
   .fab-container.is-active .fab-options a:nth-child(2) { animation-delay: 0.2s; }
   .fab-container.is-active .fab-options a:nth-child(3) { animation-delay: 0.3s; }
   .fab-container.is-active .fab-options a:nth-child(4) { animation-delay: 0.4s; }
-  .fab-container.is-active .fab-options a:nth-child(5) { animation-delay: 0.5s; }
 
   @keyframes pop-in {
     0% { opacity: 0; transform: scale(0.5); }
@@ -185,84 +182,81 @@ layout: layouts/base.njk
   /* --- Responsive styles for Account Flips section --- */
   @media (max-width: 768px) {
     .netlify .showcase {
+      /* Adjusted scale and margin to accommodate larger cards */
       transform: scale(1.2);
       margin-top: -27px;
     }
-    .netlify .showcase .card {
-      width: 200px;
-      height: 176px;
-      width: 200px;
-      height: 176px;
-    }
-    .netlify .showcase .card:nth-child(1) { top: -130px; left:-15px; }
-    .netlify .showcase .card:nth-child(2) { top: -150px; left:130px; }
-    .netlify .showcase .card:nth-child(3) { top: 10px; left: 0px; }
-    .netlify .showcase .card:nth-child(4) { top:80px; left:175px; }
-    .netlify .showcase .card:nth-child(5) { top: -18px; left:175px; }
 
-    .netlify .showcase .card:nth-child(1) { top: -130px; left:-15px; }
-    .netlify .showcase .card:nth-child(2) { top: -150px; left:130px; }
-    .netlify .showcase .card:nth-child(3) { top: 10px; left: 0px; }
-    .netlify .showcase .card:nth-child(4) { top:80px; left:175px; }
-    .netlify .showcase .card:nth-child(5) { top: -18px; left:175px; }
-  }
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border-radius: 9999px;
-    background-color: #007AFF;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+    .netlify .showcase .card {
+      /* Enlarged card dimensions (1.4x bigger) */
+      width: 200px;  /* 200px * 1.4 */
+      height: 176px; /* 120px * 1.4 */
+    }
+
+    /* Repositioned cards to fit the new, larger size */
+    .netlify .showcase .card:nth-child(1) {
+      top: -130px;
+         left:-15px;
+    }
+
+    .netlify .showcase .card:nth-child(2) {
+      top: -150px;
+      left:130px;
+    }
+
+    .netlify .showcase .card:nth-child(3) {
+      top: 10px;
+      left: 0px;
+    }
+
+    .netlify .showcase .card:nth-child(4) {
+      top:80px;
+      left:175px;
+    }
+
+    .netlify .showcase .card:nth-child(5) {
+      top: -18px;
+      left:175px;
+    }
   }
 </style>
-
 <!-- NAVBAR -->
 <div class="navbar-wrapper">
   <nav class="navbar">
     <a href="#home">Home</a>
     <a href="#specialties">Specialties</a>
-    <a href="#community">Community</a>
+    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </div>
-
 <!-- PROFILE PHOTO -->
 <div class="profile-photo-container">
-  <img src="/assets/profile.jpg" alt="Mkoreanwwn Profile Photo" class="profile-photo">
+  <img src="/assets/profile.jpg" alt="CeejayFX Profile Photo" class="profile-photo">
 </div>
-
 <div class="papa-wrapper">
-  <!-- HERO SECTION -->
   <div id="home" class="section big-hero-six" data-theme-color="rgb(255, 255, 255)">
     <div class="background">
-      <video preload playsinline muted autoplay loop poster="/assets/poster.jpg" src="/assets/background-video.mp4" fetchpriority="high"></video>
-      <video preload playsinline muted autoplay loop poster="/assets/poster.jpg" src="/assets/background-video.mp4" fetchpriority="high"></video>
+      <video preload playsinline muted autoplay poster="/assets/poster.jpg" src="/assets/background-video.mp4" fetchpriority="high"></video>
     </div>
     <div class="main-content-wrapper">
       <div class="content">
         <p>Hello, I'm</p>
         <h1>Mkorean<span id="unecessary-part-of-name">wwn</span></h1>
-        <p>A dedicated student and a full-time Binary Options trader, mastering the art of short-term market speculation.</p>
         <p>A student and a full-time Binary Options trader, engineering strategies for market success.</p>
       </div>
     </div>
     <div class="custom-wave"></div>
   </div>
-
-  <!-- SPECIALTY 1: PRECISION TIMING -->
+  <!-- SPECIALTY 1: SNIPER ENTRIES -->
   <div id="specialties" class="section handmirror" data-theme-color="rgb(234, 233, 234)" style="background-color: rgb(234, 233, 234);">
     <div class="main-content-wrapper">
       <div class="content">
         <h2><span class="timestamp">Specialty</span><br />Precision Timing</h2>
         <p>In binary options, winning and losing is decided in seconds. My primary focus is on precision timing—identifying the exact moment to enter a trade for maximum probability of success within a short expiry.</p>
         <p>It's about reading the rhythm of the market and acting with decisive confidence. This skill is crucial for filtering out market noise and capitalizing on fleeting opportunities.</p>
+     <h3>Trade with My Bots & Strategies</h3>
+        <p>Ready to elevate your trading? You can use my custom-developed trading bots and proven strategies to trade alongside me. Visit my official trading site to get started and gain access to the tools I use every day.</p>
+        <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
       </div>
       <div class="showcase">
         <div class="card video-card depth-level-3"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-4.mp4"></video></div>
@@ -276,14 +270,15 @@ layout: layouts/base.njk
       <path d="M4323 34.5566C4323 252.392 4225.5 548.808 3509.5 548.808C3135 548.808 3153.5 368.696 2564.5 393C2119.77 411.351 1139.99 506.534 733.498 548.808C327.002 591.082 0 561.739 0 561.739V700H4323C4323 700 4323 -183.279 4323 34.5566Z" fill="#060606"/>
     </svg>
   </div>
-
-  <!-- SPECIALTY 2: RAPID CHART ANALYSIS -->
+  <!-- SPECIALTY 2: PRECISE MARKET ANALYSIS -->
   <div class="section thwip" data-theme-color="rgb(6, 6, 6)" style="background-color: #060606;">
     <div class="main-content-wrapper">
       <div class="content" style="color: #faf9f6;">
-        <h2><span class="timestamp">Specialty</span><br />Rapid Chart Analysis</h2>
-        <p>A binary trade is only as good as the analysis behind it. I've developed a robust framework for decoding market behavior in real-time, focusing on patterns and indicators that predict short-term movements.</p>
-        <p>My system filters out ambiguity, allowing for quick, high-confidence decisions. When multiple signals align, it creates a high-probability setup perfect for binary trading.</p>
+        <h2><span class="timestamp">Specialty</span><br />Precise Market Analysis AND My YouTube Channel</h2>
+        <p>A trade is only as good as the analysis behind it. I've developed a robust framework for decoding market behavior, layering technicals, sentiment, and structure.</p>
+        <p>Each piece of data is like a distinct signal. When multiple signals align, they create a harmony of confluence—a high-probability setup. This system filters out the noise, allowing me to act with confidence.</p>
+        <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content and learn from my live trades and analysis.</p>
+        <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
       </div>
       <div class="showcase">
         <div class="card depth-level-1"></div>
@@ -298,60 +293,15 @@ layout: layouts/base.njk
       <path d="M4.72978e-08 34.5567C-0.00398254 252.392 251.499 426.462 957.999 515.983C2043 640.319 1870.5 376.296 2459.5 400.6C2904.23 418.951 3183 506.534 3589.5 548.808C3996 591.082 4323 561.739 4323 561.739V700H4.72978e-08C4.72978e-08 700 0.00398264 -183.279 4.72978e-08 34.5567Z" fill="#DEC19A"/>
     </svg>
   </div>
-
   <!-- SPECIALTY 3: ACCOUNT FLIPS -->
-  <div class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color: #DEC19A;">
-  <!-- SECTION 1: ACCOUNT FLIPS -->
-  <div id="specialties" class="section handmirror" data-theme-color="rgb(234, 233, 234)" style="background-color: rgb(234, 233, 234);">
-    <div class="main-content-wrapper">
-      <div class="content">
-        <h2><span class="timestamp">Specialty</span><br />Account Flips</h2>
-        <p>The ultimate test of skill and psychological fortitude. This is the art of taking a small account and aggressively compounding it through a series of precise, high-conviction binary trades.</p>
-        <p>It requires cracking the market's code under pressure. While not a core strategy for all, it's a demonstration of what's possible with elite skill and calculated risk management.</p>
-        <h2><span class="timestamp">Specialty</span><br />My Account Flips</h2>
-        <p>This is the ultimate test of skill, precision, and psychological fortitude. I specialize in taking small trading accounts and aggressively compounding them through a series of high-conviction binary trades.</p>
-        <p>It's a demonstration of what's possible with elite trading skills and calculated risk management.</p>
-      </div>
-      <div class="showcase">
-        <div class="card video-card depth-level-3"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-4.mp4"></video></div>
-        <div class="card video-card depth-level-3"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-2.mp4"></video></div>
-        <div class="card depth-level-1 hero-card"></div>
-        <div class="card video-card depth-level-2"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-3.mp4"></video></div>
-        <div class="card video-card depth-level-2"><video preload playsinline muted autoplay loop src="/assets/handmirror-demo-1.mp4"></video></div>
-      </div>
-    </div>
-    <svg class="wave wave-bottom" width="4323" height="700" viewBox="0 0 4323 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4323 34.5566C4323 252.392 4225.5 548.808 3509.5 548.808C3135 548.808 3153.5 368.696 2564.5 393C2119.77 411.351 1139.99 506.534 733.498 548.808C327.002 591.082 0 561.739 0 561.739V700H4323C4323 700 4323 -183.279 4323 34.5566Z" fill="#060606"/>
-    </svg>
-  </div>
-  <!-- SECTION 2: FOLLOWER SUCCESS -->
-  <div class="section thwip" data-theme-color="rgb(6, 6, 6)" style="background-color: #060606;">
-    <div class="main-content-wrapper">
-      <div class="content" style="color: #faf9f6;">
-        <h2><span class="timestamp">Community</span><br />Follower's Success</h2>
-        <p>The success of my community is a testament to the effectiveness of my trading signals.</p>
-        <p>The proof is in the results from followers who have trusted my analysis and joined my community. Their success is my success.</p>
-      </div>
-      <div class="showcase">
-        <div class="card depth-level-1"></div>
-        <div class="card depth-level-2"></div>
-        <div class="card depth-level-3"></div>
-        <div class="card depth-level-2"></div>
-        <div class="card depth-level-3"></div>
-        <div class="card depth-level-1 video-card"><video preload playsinline muted autoplay loop src="/assets/thwip-video.mp4" id="thwip-video"></video></div>
-      </div>
-    </div>
-    <svg class="wave wave-bottom" width="4323" height="700" viewBox="0 0 4323 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.72978e-08 34.5567C-0.00398254 252.392 251.499 426.462 957.999 515.983C2043 640.319 1870.5 376.296 2459.5 400.6C2904.23 418.951 3183 506.534 3589.5 548.808C3996 591.082 4323 561.739 4323 561.739V700H4.72978e-08C4.72978e-08 700 0.00398264 -183.279 4.72978e-08 34.5567Z" fill="#DEC19A"/>
-    </svg>
-  </div>
-  <!-- SECTION 3: YOUTUBE CHANNEL -->
   <div class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color:  #b0c0e6;">
     <div class="main-content-wrapper">
       <div class="content">
-        <h2><span class="timestamp">Content</span><br />My YouTube Channel</h2>
-        <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content and learn from my live trades and analysis.</p>
-        <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
+        <h2><span class="timestamp">Specialty</span><br />Account Flips AND community</h2>
+        <p>The ultimate test of skill and psychological fortitude. This is the art of taking a small account and aggressively compounding it through a series of precise, high-conviction trades.</p>
+        <p>It requires cracking the market's code under pressure. While not a core strategy for all, it's a demonstration of what's possible with elite skill and calculated risk management.</p>
+       <p>The success of my community is a testament to the effectiveness of my trading signals.</p>
+        <p>The proof is in the results from followers who have trusted my analysis and joined my community. Their success is my success.</p>
       </div>
       <div class="showcase">
         <div class="card depth-level-2"></div>
@@ -365,52 +315,31 @@ layout: layouts/base.njk
       <path d="M0.996094 202V80.4186C0.996094 80.4186 202 -52.0911 743 24.5C1284 101.091 1884 24.5 2624 24.5C3364 24.5 4324 101.091 4324 101.091C4324 101.091 4324 202 4324 202H0.996094Z" fill="#FFFFFF"/>
     </svg>
   </div>
-
-  <!-- COMMUNITY & TRADING TOOLS SECTIONS -->
-  <div id="community" class="section" style="background-color: #FFFFFF; padding: 60px 0; display: flex; flex-direction: column; align-items: center; gap: 40px;">
-    <!-- FOLLOWER SUCCESS -->
-    <div class="main-content-wrapper" style="text-align: center;">
-      <h2>Follower's Success with My Signals</h2>
-      <p>The success of my community is a testament to the effectiveness of my trading signals. Here are some of the results from followers who have trusted my analysis.</p>
-      <!-- You can add images or testimonials of follower success here. Example: -->
-      <!-- <img src="/assets/testimonial1.jpg" alt="Follower success story"> -->
-    </div>
-
-    <!-- YOUTUBE CHANNEL -->
-    <div class="main-content-wrapper" style="text-align: center;">
-      <h2>Check Out My YouTube Channel</h2>
-      <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content.</p>
-      <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
-    </div>
-
-    <!-- TRADE WITH BOTS AND STRATEGIES -->
-    <div class="main-content-wrapper" style="text-align: center;">
-      <h2>Trade with My Bots and Strategies</h2>
-      <p>Ready to elevate your trading? You can use my custom-developed trading bots and strategies to trade alongside me. Visit my trading site to get started.</p>
-      <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
-    </div>
-  </div>
   
-  <!-- TRADE WITH ME SECTION -->
+  <!-- MENTORS & INSPIRATIONS (FIXED STRUCTURE) -->
   <div id="about" class="section" style="background-color: #FFFFFF; padding: 60px 0;">
     <div class="main-content-wrapper people-id-like-to-meet">
       <div class="content">
-        <h3>Trade with My Bots & Strategies</h3>
-        <p>Ready to elevate your trading? You can use my custom-developed trading bots and proven strategies to trade alongside me. Visit my official trading site to get started and gain access to the tools I use every day.</p>
-        <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
+        <h3>Mentors & Inspirations</h3>
+        <p>As a trader and a student, I'm constantly learning from those who've mastered their craft. I've been fortunate to connect with some incredible minds, but the journey of learning never stops. Here are a few inspirations.</p>
+        <ul>
+          <li class="checked"><span class="tick"></span><a href="#">Vidollar</a></li>
+          <li class="checked"><span class="tick"></span><a href="#">Habbyfx</a></li>
+          <li><span class="tick"></span><a href="#">You</a></li>
+        </ul>
       </div>
     </div>
   </div>
 
   <!-- NEW COMPACT FOOTER -->
   <div id="contact" class="footer-compact">
-    <div class="footer-socials-compact">
+   <div class="footer-socials-compact">
       <a href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp Group"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp Group"/></a>
-      <a href="https://t.me/ceejaytradess" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
+      <a href="https://t.me/mkorean" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
       <a href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
       <a href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank" title="TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
       <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" title="YouTube"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
-      <a href="https://t.me/ceejaytradess" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
+      <a href="https://t.me/mkorean" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
       <a href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
       <a href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
       <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
@@ -420,11 +349,11 @@ layout: layouts/base.njk
   </div>
 </div>
 <img src="/assets/not-how-this-works.png" id="easterNope" class="easter not-how-this-works" />
-<!-- FLOATING ACTION BUTTON (FAB) FOR CONTACT -->
+<!-- FLOATING ACTION BUTTON (FAB) FOR LIVE CHAT -->
 <div class="fab-container">
   <div class="fab-options">
     <a id="fab-whatsapp" href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp Group"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
-    <a id="fab-telegram" href="https://t.me/ceejaytradess" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
+    <a id="fab-telegram" href="https://t.me/mkorean" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
     <a id="fab-youtube" href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" title="YouTube"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
     <a id="fab-instagram" href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
     <a id="fab-tiktok" href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank" title="TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
