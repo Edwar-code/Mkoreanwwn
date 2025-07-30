@@ -1,0 +1,360 @@
+---
+layout: layouts/base.njk
+---
+<style>
+  .navbar-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+    z-index: 1001; /* Must be on top */
+    display: flex;
+    justify-content: center;
+  }
+  .navbar {
+    display: flex;
+    padding: 8px 12px;
+    background-color: rgba(180, 175, 165, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .navbar a {
+    scroll-behavior: smooth;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    color: #007AFF;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  .navbar a:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f7f3e9;
+  }
+  .profile-photo-container {
+    position: absolute; /* Lifts the element out of the document flow */
+    width: 100%;
+    top: 85px; /* Distance from the top of the page */
+    left: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10; /* Places it on top of the hero video */
+  }
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+  }
+  .section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+    padding:16px 0; /* Added default padding for sections */
+  }
+  .big-hero-six {
+    /* This padding pushes the text down to make room for the overlapping photo */
+    padding-top: 180px;
+  }
+  .wave-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+    bottom: -2px;
+  }
+  .footer-compact {
+    background-color: #111;
+    color: #666;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  .footer-socials-compact a {
+    display: inline-block;
+    margin: 0 12px;
+  }
+  .footer-socials-compact img {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.5); /* Default state for all icons: Makes them grey */
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  /* --- FIX: Only adjust the size of the TikTok icon, let it inherit the filter --- */
+  .footer-socials-compact img[alt="TikTok"] {
+    width: 26px;
+    height: 26px;
+  }
+  /* On hover, ALL icons will now turn white */
+  .footer-socials-compact a:hover img {
+    filter: invert(1);
+    transform: scale(1.1);
+  }
+  .footer-copyright-compact {
+    margin-top: 20px;
+    font-size: 0.85em;
+  }
+  .fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .fab-main {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #007AFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  .fab-main:hover {
+    transform: scale(1.1);
+  }
+  .fab-main svg {
+    width: 30px;
+    height: 30px;
+    fill: #FFFFFF;
+  }
+  .fab-options {
+    position: absolute;
+    bottom: 75px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  }
+  .fab-container.is-active .fab-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .fab-options a {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fab-options a:hover {
+    transform: scale(1.15);
+  }
+  .fab-options img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1); /* Makes icons inside the FAB white */
+  }
+  /* Brand colors for FAB buttons */
+  #fab-whatsapp { background-color: #25D366; }
+  #fab-telegram { background-color: #26A5E4; }
+  #fab-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+  #fab-tiktok { background-color: #000000; }
+  #fab-youtube { background-color: #FF0000; }
+
+  .fab-container.is-active .fab-options a {
+    animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  .fab-container.is-active .fab-options a:nth-child(1) { animation-delay: 0.1s; }
+  .fab-container.is-active .fab-options a:nth-child(2) { animation-delay: 0.2s; }
+  .fab-container.is-active .fab-options a:nth-child(3) { animation-delay: 0.3s; }
+  .fab-container.is-active .fab-options a:nth-child(4) { animation-delay: 0.4s; }
+  .fab-container.is-active .fab-options a:nth-child(5) { animation-delay: 0.5s; }
+
+
+  @keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* --- Responsive styles for Account Flips section --- */
+  @media (max-width: 768px) {
+    .netlify .showcase {
+      /* Adjusted scale and margin to accommodate larger cards */
+      transform: scale(1.2);
+      margin-top: -27px;
+    }
+
+    .netlify .showcase .card {
+      /* Enlarged card dimensions (1.4x bigger) */
+      width: 200px;  /* 200px * 1.4 */
+      height: 176px; /* 120px * 1.4 */
+    }
+
+    /* Repositioned cards to fit the new, larger size */
+    .netlify .showcase .card:nth-child(1) {
+      top: -130px;
+         left:-15px;
+    }
+
+    .netlify .showcase .card:nth-child(2) {
+      top: -150px;
+      left:130px;
+    }
+
+    .netlify .showcase .card:nth-child(3) {
+      top: 10px;
+      left: 0px;
+    }
+
+    .netlify .showcase .card:nth-child(4) {
+      top:80px;
+      left:175px;
+    }
+
+    .netlify .showcase .card:nth-child(5) {
+      top: -18px;
+      left:175px;
+    }
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    background-color: #007AFF;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+</style>
+<!-- NAVBAR -->
+<div class="navbar-wrapper">
+  <nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#specialties">Specialties</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+<!-- PROFILE PHOTO -->
+<div class="profile-photo-container">
+  <img src="/assets/profile.jpg" alt="Mkoreanwwn Profile Photo" class="profile-photo">
+</div>
+<div class="papa-wrapper">
+  <div id="home" class="section big-hero-six" data-theme-color="rgb(255, 255, 255)">
+    <div class="background">
+      <video preload playsinline muted autoplay poster="/assets/poster.jpg" src="/assets/background-video.mp4" fetchpriority="high"></video>
+    </div>
+    <div class="main-content-wrapper">
+      <div class="content">
+        <p>Hello, I'm</p>
+        <h1>Mkorean<span id="unecessary-part-of-name">wwn</span></h1>
+        <p>A dedicated student and a full-time Binary Options trader, mastering the art of market speculation.</p>
+      </div>
+    </div>
+    <div class="custom-wave"></div>
+  </div>
+  <!-- SPECIALTY 1: ACCOUNT FLIPS -->
+  <div id="specialties" class="section netlify" data-theme-color="rgb(222, 193, 154)" style="background-color:  #b0c0e6;">
+    <div class="main-content-wrapper">
+      <div class="content">
+        <h2><span class="timestamp">My Specialty</span><br />Account Flips</h2>
+        <p>This is the ultimate test of skill, precision, and psychological fortitude. I specialize in taking small trading accounts and aggressively compounding them through a series of high-conviction binary trades.</p>
+        <p>It demands a deep understanding of market dynamics and flawless execution under pressure. While a high-risk, high-reward endeavor, it showcases the potential of elite trading skills and calculated risk management.</p>
+      </div>
+      <div class="showcase">
+        <div class="card depth-level-2"></div>
+        <div class="card depth-level-3"></div>
+        <div class="card depth-level-1"></div>
+        <div class="card depth-level-2"></div>
+        <div class="card depth-level-3"></div>
+      </div>
+    </div>
+    <svg class="wave wave-bottom" width="4324" height="202" viewBox="0 0 4324 202" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.996094 202V80.4186C0.996094 80.4186 202 -52.0911 743 24.5C1284 101.091 1884 24.5 2624 24.5C3364 24.5 4324 101.091 4324 101.091C4324 101.091 4324 202 4324 202H0.996094Z" fill="#FFFFFF"/>
+    </svg>
+  </div>
+
+  <!-- FOLLOWER SUCCESS -->
+    <div class="section" style="background-color: #FFFFFF; padding: 60px 0;">
+        <div class="main-content-wrapper">
+            <div class="content" style="text-align: center;">
+                <h2>Follower's Success with My Signals</h2>
+                <p>The success of my community is a testament to the effectiveness of my trading signals. Here are some of the results from followers who have trusted my analysis.</p>
+                <!-- Add images or testimonials of follower success here -->
+            </div>
+        </div>
+    </div>
+
+  <!-- YOUTUBE CHANNEL -->
+    <div class="section thwip" data-theme-color="rgb(6, 6, 6)" style="background-color: #060606;">
+        <div class="main-content-wrapper">
+        <div class="content" style="color: #faf9f6; text-align: center;">
+            <h2>Check Out My YouTube Channel</h2>
+            <p>I share my trading journey, strategies, and insights on my YouTube channel. Subscribe to stay updated with my latest content.</p>
+            <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" class="btn">Visit YouTube Channel</a>
+        </div>
+        </div>
+        <svg class="wave wave-bottom" width="4323" height="700" viewBox="0 0 4323 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.72978e-08 34.5567C-0.00398254 252.392 251.499 426.462 957.999 515.983C2043 640.319 1870.5 376.296 2459.5 400.6C2904.23 418.951 3183 506.534 3589.5 548.808C3996 591.082 4323 561.739 4323 561.739V700H4.72978e-08C4.72978e-08 700 0.00398264 -183.279 4.72978e-08 34.5567Z" fill="#DEC19A"/>
+        </svg>
+    </div>
+
+  <!-- TRADE WITH BOTS AND STRATEGIES -->
+    <div id="about" class="section" style="background-color: #FFFFFF; padding: 60px 0;">
+        <div class="main-content-wrapper">
+            <div class="content" style="text-align: center;">
+                <h2>Trade with My Bots and Strategies</h2>
+                <p>Ready to elevate your trading? You can use my custom-developed trading bots and strategies to trade alongside me. Visit my trading site to get started.</p>
+                <a href="https://www.mkoreanwwn.com/" target="_blank" class="btn">Trade With Me</a>
+            </div>
+        </div>
+    </div>
+
+  <!-- NEW COMPACT FOOTER -->
+  <div id="contact" class="footer-compact">
+    <div class="footer-socials-compact">
+      <a href="https://tr.ee/EXmhPh-RN9" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp Group"/></a>
+      <a href="https://t.me/ceejaytradess" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
+      <a href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
+      <a href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
+      <a href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
+    </div>
+    <p class="footer-copyright-compact">Copyleft © 2025</p>
+  </div>
+</div>
+<img src="/assets/not-how-this-works.png" id="easterNope" class="easter not-how-this-works" />
+<!-- FLOATING ACTION BUTTON (FAB) FOR LIVE CHAT -->
+<div class="fab-container">
+  <div class="fab-options">
+    <a id="fab-instagram" href="https://www.instagram.com/mkorean.wwn?igsh=MXRjaTZ2MzAyYm9lYg==" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram"/></a>
+    <a id="fab-telegram" href="https://t.me/ceejaytradess" target="_blank" title="Telegram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/telegram.svg" alt="Telegram"/></a>
+    <a id="fab-whatsapp" href="https://tr.ee/EXmhPh-RN9" target="_blank" title="WhatsApp Group"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp"/></a>
+    <a id="fab-tiktok" href="https://www.tiktok.com/@mkoreanwwn.com?_t=ZM-8yS8g4Z8l9i&_r=1" target="_blank" title="TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/tiktok.svg" alt="TikTok"/></a>
+    <a id="fab-youtube" href="https://www.youtube.com/@AlwaysMnyamaa" target="_blank" title="YouTube"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/youtube.svg" alt="YouTube"/></a>
+  </div>
+  <div class="fab-main">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,2H4A2,2,0,0,0,2,4V22L6,18H20A2,2,0,0,0,22,16V4A2,2,0,0,0,20,2ZM20,16H5.17L4,17.17V4H20Z"/></svg>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fabContainer = document.querySelector('.fab-container');
+    fabContainer.addEventListener('click', function() {
+      this.classList.toggle('is-active');
+    });
+  });
+</script>

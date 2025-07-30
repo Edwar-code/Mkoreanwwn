@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- The `data-theme` attribute will be added to this tag by JavaScript -->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{%- if title -%}{{ title }}{%- else -%}Mkoreanwwn{%- endif -%}</title>
+    <meta name="description" content="{%- if description -%}{{ description }}{%- else -%}Personal website of Mkoreanwwn{%- endif -%}">
+    <meta name="author" content="Rafael Conde">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta name="theme-color" content="rgb(255 255 255)">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    {% if stylesheet %}
+    <link rel="stylesheet" href="/css/{{ stylesheet }}"/>
+    {% else %}
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css">
+    {% endif %}
+  </head>
+  <body>
+    {{ content | safe }}
+    {% set js %}{% include "js/scripts.js" %}{% endset %}
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+    <script>
+      // Your original included scripts
+      {{ js | jsmin | safe }}
+
+      // --- THEME SWITCHER SCRIPT ---
+      (function() {
+        // This function sets the theme and saves it
+        function applyTheme(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+          // Update the button icon after the DOM is loaded
+          const themeToggleIcon = document.getElementById('theme-toggle-icon');
+          if (themeToggleIcon) {
+            themeToggleIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+          }
+        }
+
+        // This function attaches the click event to the button
+        function setupThemeToggler() {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            if (themeToggleButton) {
+                themeToggleButton.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                });
+            }
+        }
+
+        // Run this part immediately to avoid the page flashing the wrong theme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else if (prefersDark) {
+          applyTheme('dark');
+        } else {
+          applyTheme('light');
+        }
+
+        // Wait for the DOM to be fully loaded before trying to find the button
+        document.addEventListener('DOMContentLoaded', setupThemeToggler);
+      })();
+    </script>
+  </body>
+</html>
